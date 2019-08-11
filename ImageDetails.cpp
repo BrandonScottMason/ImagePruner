@@ -14,7 +14,7 @@ ImageDetails::ImageDetails(std::string fullFilePath)
 
     std::ifstream file(fullFilePath.c_str(), std::ios::binary | std::ios::ate);
     m_nfileSizeInBytes = file.tellg();
-    std::cout << m_szFileName << "'s size is " << m_nfileSizeInBytes << " bytes. \n";
+    //std::cout << m_szFileName << "'s size is " << m_nfileSizeInBytes << " bytes. \n";
 
     if (fullFilePath.find(".png") != std::string::npos)
     {
@@ -26,12 +26,13 @@ ImageDetails::ImageDetails(std::string fullFilePath)
         m_unPixelWidth = ntohl(width);
         m_unPixelHeight = ntohl(height);
 
-        std::cout << m_szFileName << " is " << m_unPixelWidth << " pixels wide and " << m_unPixelHeight << " pixels high.\n";
+        //std::cout << m_szFileName << " is " << m_unPixelWidth << " pixels wide and " << m_unPixelHeight << " pixels high.\n";
     }
     else
     {
         // JPG files require a library to uncompress in order to access the data.
-        std::cout << "Program doesn't yet handle this file type.\n";
+        // TODO: Store image dimensions for JPG files
+        //std::cout << "Program doesn't yet handle this file type.\n";
     }
 
     file.close();
